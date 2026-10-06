@@ -27,9 +27,8 @@ ProyectoAPI/
 ## Entorno virtual
 
 ```bash
-cd /home/ian/Documents/PrograIII/ProyectoAPI_PrograIII/
-python3 -m venv .venv-ProyectoAPI
-source .venv-ProyectoAPI/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 python3 -m pip install -r requirements.txt
 python3 main.py
 ```
