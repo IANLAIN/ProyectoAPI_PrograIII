@@ -3,17 +3,26 @@
 from __future__ import annotations
 import pandas as pd
 
-def solicitar_datos() -> tuple[int, str]:
-    """Request the department and number of records to display."""
+def solicitar_datos() -> tuple[int, str, str | None, str | None]:
+    """Request search filters and record limit."""
     departamento = input("Department to search (e.g. BOGOTA, ANTIOQUIA): ")
     while True:
         try:
             limite = int(input("Number of records to display: "))
             if limite > 0:
-                return limite, departamento
+                break
         except ValueError:
             pass
         print("Enter a positive integer.")
+
+    tipo_contagio = input(
+        "Type of transmission (optional, e.g. IMPORTADO, COMUNITARIA): "
+    ).strip() or None
+    estado = input(
+        "Status (optional, e.g. LEVE, GRAVE, FALLECIDO): "
+    ).strip() or None
+    return limite, departamento, tipo_contagio, estado
+
 
 def mostrar_casos(casos: pd.DataFrame) -> None:
     """Print the records using format() for specific columns."""
