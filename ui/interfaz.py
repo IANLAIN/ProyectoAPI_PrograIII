@@ -5,7 +5,9 @@ import pandas as pd
 
 def solicitar_datos() -> tuple[int, str, str | None, str | None]:
     """Request search filters and record limit."""
-    departamento = input("Department to search (e.g. BOGOTA, ANTIOQUIA): ")
+    departamento = input(
+        "Department to search (e.g. BOGOTA, ANTIOQUIA): "
+    ).strip().upper()
     while True:
         try:
             limite = int(input("Number of records to display: "))
@@ -17,10 +19,10 @@ def solicitar_datos() -> tuple[int, str, str | None, str | None]:
 
     tipo_contagio = input(
         "Type of transmission (optional, e.g. IMPORTADO, COMUNITARIA): "
-    ).strip() or None
+    ).strip().capitalize() or None
     estado = input(
         "Status (optional, e.g. LEVE, GRAVE, FALLECIDO): "
-    ).strip() or None
+    ).strip().capitalize() or None
     return limite, departamento, tipo_contagio, estado
 
 
